@@ -8,6 +8,9 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <script>
+  if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js");
+  </script>
   <header><img src="img/logo.webp" alt=""><h1>Stockfish</h1></header>
   <div id="board"></div>
   <div id="info">
