@@ -3,9 +3,7 @@ const sf = new Worker(URL.createObjectURL(new Blob([
 ])));
 let onInfo = () => {};
 sf.onmessage = e => onInfo(String(e.data));
-function analyze(fen, depth) {
-  sf.postMessage("uci");
-  sf.postMessage("setoption name MultiPV value 1");
-  sf.postMessage("position fen " + fen);
-  sf.postMessage("go depth " + depth);
-}
+const send = c => sf.postMessage(c);
+send("uci");
+const setLevel = n => send("setoption name Skill Level value " + n);
+const think = (fen, ms) => { send("position fen " + fen); send("go movetime " + ms); };
